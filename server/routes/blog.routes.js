@@ -26,7 +26,7 @@ blogRouter.delete("/:blogId", async (req, res) => {
       const { userId } = req.body;
   
       const blog = await BlogModel.findById(blogId);
-  
+      console.log(blog);
       if (!blog) {
         throw new Error("Blog not found");
       }
@@ -40,6 +40,7 @@ blogRouter.delete("/:blogId", async (req, res) => {
         throw new Error("Not authorized to delete blog!");
       }
     } catch (error) {
+
       res.send({ message: "Error", error: error.message });
     }
   });

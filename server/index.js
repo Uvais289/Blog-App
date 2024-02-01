@@ -6,11 +6,12 @@ const cookiParser= require("cookie-parser");
 const authCheck = require("./middlewares/auth.middleware");
 const blogRouter= require("./routes/blog.routes");
 dotenv.config();
-
+const cors = require('cors');
 
 const app= express();
 const port= process.env.PORT;
 
+app.use(cors());
 app.use(express.json());
 app.use("/auth",authRouter);
 app.use(cookiParser());
